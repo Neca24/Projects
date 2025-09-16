@@ -1,0 +1,5 @@
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\UnitTest\obj\Debug\net9.0\UnitTest.csproj.AssemblyReference.cache
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\UnitTest\obj\Debug\net9.0\UnitTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\UnitTest\obj\Debug\net9.0\UnitTest.AssemblyInfoInputs.cache
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\UnitTest\obj\Debug\net9.0\UnitTest.AssemblyInfo.cs
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\UnitTest\obj\Debug\net9.0\UnitTest.csproj.CoreCompileInputs.cache

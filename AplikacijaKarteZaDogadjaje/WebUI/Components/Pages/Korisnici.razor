@@ -1,0 +1,84 @@
+﻿@page "/korisnici"
+@using BusinessLayer.Interfaces
+@using Entities.DTO
+@rendermode InteractiveServer
+@inject NavigationManager NavManager;
+
+@inject IUserBusiness userBusiness;
+
+@attribute [Authorize(Roles="Administrator")]
+
+@if(users == null)
+{
+    <p class="text-primary">Loading...</p>
+}
+else if(!users.Any())
+{
+    <p class="alert alert-danger">Trenutno nema registrovanih korisnika</p>
+}
+else
+{
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Ime</th>
+                    <th scope="col">Prezime</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Broj telefona</th>
+                    <th scope="col">Uloga</th>
+                    <th scope="col">Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in users)
+                {
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Email</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Role</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" @onclick="()=>Delete(item.UserId)"><i class="bi bi-trash3"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<div class="container">
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        <div class="alert @(Success ? "alert-success" : "alert-danger")">@Message</div>
+    }
+</div>
+
+@code{
+    private List<UserDTO>? users = new();
+    private bool Success;
+    private string? Message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await userBusiness.GetAllUsers();
+    }
+
+    private async Task Delete(int userId)
+    {
+        var result = await userBusiness.DeleteUser(userId);
+        Success = result.Success;
+        Message = result.Message;
+
+        if (result.Success)
+        {
+            var userRemove = users!.FirstOrDefault(u => u.UserId == userId);
+            if (userRemove != null)
+            {
+                users!.Remove(userRemove);
+            }
+        }
+    }
+}

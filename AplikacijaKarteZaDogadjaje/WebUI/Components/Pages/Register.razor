@@ -1,0 +1,95 @@
+﻿@page "/register"
+@rendermode InteractiveServer
+
+@using System.ComponentModel.DataAnnotations
+@using BusinessLayer.Interfaces
+@using Entities.DTO
+
+@inject NavigationManager NavManager
+@inject IUserBusiness _userBusiness
+
+<div class="container d-flex justify-content-center align-items-center mb-5" style="min-height:80vh;">
+    <EditForm Model="@registerDTO" OnValidSubmit="@HandleRegister" class="w-100" style="max-width: 600px;">
+        <DataAnnotationsValidator />
+
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-primary text-white text-center rounded-top-4">
+                <h3 class="mb-0">USER REGISTRATION</h3>
+            </div>
+            <div class="card-body p-4">
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Ime</label>
+                        <InputText @bind-Value="registerDTO.FirstName" class="form-control form-control-lg" placeholder="Uneti ime..." />
+                        <ValidationMessage For="@(() => registerDTO.FirstName)" class="text-danger"></ValidationMessage>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Prezime</label>
+                        <InputText @bind-Value="registerDTO.LastName" class="form-control form-control-lg" placeholder="Uneti prezime..." />
+                        <ValidationMessage For="@(() => registerDTO.LastName)" class="text-danger"></ValidationMessage>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email</label>
+                        <InputText @bind-Value="registerDTO.Email" type="email" class="form-control form-control-lg" placeholder="Uneti email..." />
+                        <ValidationMessage For="@(() => registerDTO.Email)" class="text-danger"></ValidationMessage>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Broj telefona</label>
+                        <InputText @bind-Value="registerDTO.Phone" class="form-control form-control-lg" placeholder="Uneti broj telefona..." />
+                        <ValidationMessage For="@(() => registerDTO.Phone)" class="text-danger"></ValidationMessage>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Lozinka</label>
+                        <InputText @bind-Value="registerDTO.Password" type="password" class="form-control form-control-lg" placeholder="Uneti lozinku..." />
+                        <ValidationMessage For="@(() => registerDTO.Password)" class="text-danger"></ValidationMessage>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Potvrdi lozinku</label>
+                        <InputText @bind-Value="registerDTO.ConfirmPassword" type="password" class="form-control form-control-lg" placeholder="Uneti lozinku ponovo..." />
+                        <ValidationMessage For="@(() => registerDTO.ConfirmPassword)" class="text-danger"></ValidationMessage>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn btn-primary btn-lg px-5" type="submit">REGISTER</button>
+                </div>
+
+            </div>
+        </div>
+    </EditForm>
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        <div class="alert @(Success ? "alert-danger" : "alert-success")">
+            @Message
+        </div>
+    }
+</div>
+
+@code {
+    private RegisterDTO registerDTO = new();
+    private bool Success;
+    private string? Message;
+
+    private async void HandleRegister()
+    {
+        var result = await _userBusiness.Register(registerDTO);
+
+        Success = result.Success;
+        Message = result.Message;
+
+        if (result.Success)
+        {
+            NavManager.NavigateTo("/login");
+        }
+    }
+}

@@ -1,0 +1,17 @@
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\bin\Debug\net9.0\DataAccessLayer.deps.json
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\bin\Debug\net9.0\DataAccessLayer.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\bin\Debug\net9.0\DataAccessLayer.pdb
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\bin\Debug\net9.0\Core.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\bin\Debug\net9.0\Entities.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\bin\Debug\net9.0\Core.pdb
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\bin\Debug\net9.0\Entities.pdb
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAcce.E67BD773.Up2Date
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAccessLayer.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\refint\DataAccessLayer.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\DataAccessLayer.pdb
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\DataAccessLayer\obj\Debug\net9.0\ref\DataAccessLayer.dll

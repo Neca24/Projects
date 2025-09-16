@@ -1,0 +1,150 @@
+﻿@page "/tickets"
+@rendermode InteractiveServer
+
+@using BusinessLayer.Interfaces
+@using Entities
+@using Entities.DTO
+
+@inject ITicketBusiness ticketBusiness
+@inject AuthenticationStateProvider authenticationStateProvider
+@inject NavigationManager NavManger;
+
+<div class="container my-4" style="margin-right:340px;">
+
+    <div class="mb-3">
+        <input type="text"
+               class="form-control"
+               placeholder="Pretraži događaje..."
+               @bind-value="searchTerm"
+               @bind-value:event="oninput"
+               @bind-value:after="OnSearchChanged" />
+    </div>
+
+    @if (filteredEvents == null)
+    {
+        <p class="text-primary">Loading...</p>
+    }
+    else if (!filteredEvents.Any())
+    {
+        <p class="text-danger">Nema rezultata za pretragu</p>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in filteredEvents)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-3 border-primary text-center rounded-2">
+                        <div class="card-body" style="color:darkblue">
+                            <h5 class="card-title">@item.EventName</h5><hr />
+                            <p class="card-text"><img src="./icons/datetime.png" id="icons" />@item.EventDate.ToString("g")</p>
+                            <p class="card-text"><img src="./icons/location.png" id="icons" />@item.Location</p>
+                            <p class="card-text"><img src="./icons/price.png" id="icons" />@item.Price RSD</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <input type="number" min="1" class="form-control w-25" @bind="quantities[item.EventId]" />
+                            <button class="btn btn-primary" @onclick="() => AddToCart(item)"><i class="bi bi-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+
+<div class="cart-sidebar">
+    <h5 class="text-center">🛒 Korpa</h5>
+    @if (!cartItemDTO.Any())
+    {
+        <p class="text-muted text-center">Korpa je prazna</p>
+    }
+    else
+    {
+        <ul class="list-group">
+            @foreach (var item in cartItemDTO)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>@item.EventName</strong><br />
+                        @item.Quantity x @item.Price RSD
+                    </div>
+                    <button class="btn btn-sm btn-danger" @onclick="() => RemoveFromCart(item.EventId)">🗑️</button>
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+@code{
+    private IEnumerable<EventsWithTicketsDTO>? eventsWithTickets;
+    private IEnumerable<EventsWithTicketsDTO>? filteredEvents;
+    private List<CartItemDTO> cartItemDTO = new();
+    private Dictionary<int, int> quantities = new();
+    private string searchTerm = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        eventsWithTickets = await ticketBusiness.GetEventsWithTickets();
+        filteredEvents = eventsWithTickets;
+        foreach(var item in eventsWithTickets)
+        {
+            quantities[item.EventId] = 1;
+        }
+    }
+
+    private async Task AddToCart(EventsWithTicketsDTO item)
+    {
+        var authState = await authenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity != null && user.Identity.IsAuthenticated)
+        {
+            var quantity = quantities[item.EventId];
+            var existingItem = cartItemDTO.FirstOrDefault(c => c.EventId == item.EventId);
+
+            if (existingItem != null)
+            {
+                existingItem.Quantity += quantity;
+            }
+            else
+            {
+                cartItemDTO.Add(new CartItemDTO
+                    {
+                        EventId = item.EventId,
+                        EventName = item.EventName,
+                        Price = item.Price,
+                        Quantity = quantity
+                    });
+            }
+        }
+        else
+        {
+            NavManger.NavigateTo("/login");
+        }
+    }
+
+    private void RemoveFromCart(int eventId)
+    {
+        var item = cartItemDTO.FirstOrDefault(c => c.EventId == eventId);
+        if (item != null)
+        {
+            cartItemDTO.Remove(item);
+        }
+    }
+
+    private void OnSearchChanged()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            filteredEvents = eventsWithTickets;
+        }
+        else
+        {
+            filteredEvents = eventsWithTickets!
+                .Where(e => e.EventName != null &&
+                            e.EventName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase));
+        }
+    }
+
+}

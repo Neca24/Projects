@@ -1,0 +1,53 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Tickets</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="nav flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="tickets">
+                <span aria-hidden="true"><i class="bi bi-ticket-detailed"></i></span> Karte
+            </NavLink>
+        </div>
+
+        <AuthorizeView Roles="Administrator">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="korisnici">
+                        <span aria-hidden="true"><i class="bi bi-people-fill"></i></span> Korisnici
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Roles="Administrator">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="add-event">
+                        <span aria-hidden="true"><i class="bi bi-calendar-event"></i></span> Dogadjaji
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Roles="Administrator">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="add-ticket">
+                        <span aria-hidden="true"><i class="bi bi-patch-plus-fill"></i></span> Dodaj karte
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+    </nav>
+</div>

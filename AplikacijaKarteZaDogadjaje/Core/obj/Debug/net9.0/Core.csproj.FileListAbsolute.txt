@@ -1,0 +1,11 @@
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\bin\Debug\net9.0\Core.deps.json
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\bin\Debug\net9.0\Core.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\bin\Debug\net9.0\Core.pdb
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\Core.AssemblyInfoInputs.cache
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\Core.AssemblyInfo.cs
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\Core.csproj.CoreCompileInputs.cache
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\Core.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\refint\Core.dll
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\Core.pdb
+C:\Users\Nemanja\Desktop\AplikacijaKarteZaDogadjaje\Core\obj\Debug\net9.0\ref\Core.dll

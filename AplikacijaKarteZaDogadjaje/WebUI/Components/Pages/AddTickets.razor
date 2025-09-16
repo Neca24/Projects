@@ -1,0 +1,72 @@
+﻿@page "/add-ticket"
+
+@rendermode InteractiveServer
+@using BusinessLayer.Implementation
+@using BusinessLayer.Interfaces
+@using Entities
+@using Entities.DTO
+
+@attribute [Authorize(Roles = "Administrator")]
+@inject NavigationManager NavManager;
+@inject IJSRuntime js
+
+@inject ITicketBusiness ticketBussiness
+@inject IEventBusiness eventBusiness
+
+<div class="container d-flex justify-content-center align-items-center" style="height:80vh;">
+    <EditForm Model="tickeModel" OnValidSubmit="HandleSubmit">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-primary text-white text-center rounded-top-4">
+                <h3 class="mb-0">TICKET</h3>
+            </div>
+            <div class="card-body p-4">
+
+                <div class="form-group mb-3">
+                    <label class="form-label">Cena</label>
+                    <InputNumber class="form-control form-control-lg" @bind-Value="tickeModel.Price"/>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="form-label">Događaj</label>
+                    <InputSelect @bind-Value="tickeModel.EventId" class="form-control form-control-lg">
+                        <option value="">-- Izaberi dogadjaj --</option>
+                        @foreach (var ev in eventsDto)
+                        {
+                            <option value="@ev.EventId">@ev.Name</option>
+                        }
+                    </InputSelect>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-primary btn-lg" type="submit">DODAJ</button>
+                </div>
+
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+@code{
+    private TicketDTO tickeModel = new();
+    private List<Event> eventsDto = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        eventsDto = await eventBusiness.GetAllEvents();
+    }
+
+    private async Task HandleSubmit()
+    {
+        var result = await ticketBussiness.AddTicket(tickeModel);
+        if (result.Success)
+        {
+            await js.InvokeVoidAsync("alert", result.Message);
+            NavManager.NavigateTo("/");
+        }
+        else
+        {
+            await js.InvokeVoidAsync("alert", result.Message);
+            NavManager.NavigateTo("/add-ticket");
+        }
+    }
+}
