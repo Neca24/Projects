@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nemanja\\Desktop\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj": {}
+    "C:\\Users\\Nemanja\\Documents\\GitHub\\Projects\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nemanja\\Desktop\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj": {
+    "C:\\Users\\Nemanja\\Documents\\GitHub\\Projects\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nemanja\\Desktop\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Nemanja\\Documents\\GitHub\\Projects\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\Nemanja\\Desktop\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\Nemanja\\Documents\\GitHub\\Projects\\AplikacijaKarteZaDogadjaje\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\Nemanja\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nemanja\\Desktop\\AplikacijaKarteZaDogadjaje\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\Nemanja\\Documents\\GitHub\\Projects\\AplikacijaKarteZaDogadjaje\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

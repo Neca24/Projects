@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+cPMg1Iq/Wc=",
+  "dgSpecHash": "wg3DAv3fuLw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nemanja\\Desktop\\AplikacijaKarteZaDogadjaje\\WebUI\\WebUI.csproj",
+  "projectFilePath": "C:\\Users\\Nemanja\\Documents\\GitHub\\Projects\\AplikacijaKarteZaDogadjaje\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nemanja\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\Nemanja\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
